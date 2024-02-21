@@ -24,12 +24,6 @@ namespace Week02
         {
             gvHsinh.DataSource = hocSinhDAO.Load();
             // nhanh cap nhat o day
-
-
-
-
-
-
         }
 
         private void btnThem_Click(object sender, EventArgs e)
