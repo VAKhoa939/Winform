@@ -24,6 +24,7 @@ namespace Week02
         {
             gvHsinh.DataSource = hocSinhDAO.Load();
             // nhanh cap nhat o day
+            //I am the storm that is appoaching
         }
 
         private void btnThem_Click(object sender, EventArgs e)
