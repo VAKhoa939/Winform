@@ -23,6 +23,7 @@ namespace Week02
         private void FHocSinh_Load(object sender, EventArgs e)
         {
             gvHsinh.DataSource = hocSinhDAO.Load();
+            // nhanh cap nhat o day
         }
 
         private void btnThem_Click(object sender, EventArgs e)
