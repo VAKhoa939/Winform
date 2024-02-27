@@ -10,10 +10,5 @@ namespace Week02
 {
     class GiaoVienDAO : ConNguoiDAO
     {
-        public override DataTable Load()
-        {
-            tableName = "GiaoVien";
-            return base.Load();
-        }
     }
 }

@@ -18,18 +18,22 @@ namespace Week02
         public FHocSinh()
         {
             InitializeComponent();
+            uc.Load += FHocSinh_Load;
+            uc.btnThem.Click += btnThem_Click;
+            uc.btnXoa.Click += btnXoa_Click;
+            uc.btnSua.Click += btnSua_Click;
+            uc.gvUC.CellContentClick += gvHsinh_CellContentClick;
+            uc.btnChuyen.Click += btnChuyen_Click;
         }
 
         private void FHocSinh_Load(object sender, EventArgs e)
         {
-            gvHsinh.DataSource = hocSinhDAO.Load();
-            // nhanh cap nhat o day
-            // ...
+            uc.gvUC.DataSource = hocSinhDAO.Load();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            HocSinh hocSinh = new HocSinh(txtTen.Text, txtCmnd.Text, txtDiachi.Text, dtNamsinh.Value, txtEmail.Text, txtPhoneno.Text, txtGioitinh.Text, numDiemtb.Value);
+            HocSinh hocSinh = new HocSinh(uc.txtTen.Text, uc.txtCmnd.Text, uc.txtDiachi.Text, uc.dtNamsinh.Value, uc.txtEmail.Text, uc.txtPhoneno.Text, uc.txtGioitinh.Text, numDiemtb.Value);
             if (!hocSinh.CheckThongTin())
             {
                 MessageBox.Show("Thong tin khong hop le. Moi nhap lai.");
@@ -41,14 +45,14 @@ namespace Week02
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            HocSinh hocSinh = new HocSinh(txtTen.Text, txtCmnd.Text, txtDiachi.Text, dtNamsinh.Value, txtEmail.Text, txtPhoneno.Text, txtGioitinh.Text, numDiemtb.Value);
+            HocSinh hocSinh = new HocSinh(uc.txtTen.Text, uc.txtCmnd.Text, uc.txtDiachi.Text, uc.dtNamsinh.Value, uc.txtEmail.Text, uc.txtPhoneno.Text, uc.txtGioitinh.Text, numDiemtb.Value);
             hocSinhDAO.Xoa(hocSinh);
             FHocSinh_Load(sender, e);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            HocSinh hocSinh = new HocSinh(txtTen.Text, txtCmnd.Text, txtDiachi.Text, dtNamsinh.Value, txtEmail.Text, txtPhoneno.Text, txtGioitinh.Text, numDiemtb.Value);
+            HocSinh hocSinh = new HocSinh(uc.txtTen.Text, uc.txtCmnd.Text, uc.txtDiachi.Text, uc.dtNamsinh.Value, uc.txtEmail.Text, uc.txtPhoneno.Text, uc.txtGioitinh.Text, numDiemtb.Value);
             if (!hocSinh.CheckThongTin())
             {
                 MessageBox.Show("Thong tin khong hop le. Moi nhap lai.");
@@ -60,14 +64,14 @@ namespace Week02
 
         private void gvHsinh_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtTen.Text = gvHsinh.Rows[e.RowIndex].Cells[0].Value.ToString();
-            txtCmnd.Text = gvHsinh.Rows[e.RowIndex].Cells[1].Value.ToString();
-            txtDiachi.Text = gvHsinh.Rows[e.RowIndex].Cells[2].Value.ToString();
-            dtNamsinh.Value = (DateTime)gvHsinh.Rows[e.RowIndex].Cells[3].Value;
-            txtEmail.Text = gvHsinh.Rows[e.RowIndex].Cells[4].Value.ToString();
-            txtPhoneno.Text = gvHsinh.Rows[e.RowIndex].Cells[5].Value.ToString();
-            txtGioitinh.Text = gvHsinh.Rows[e.RowIndex].Cells[6].Value.ToString();
-            numDiemtb.Value = (decimal)gvHsinh.Rows[e.RowIndex].Cells[7].Value;
+            uc.txtTen.Text = uc.gvUC.Rows[e.RowIndex].Cells[0].Value.ToString();
+            uc.txtCmnd.Text = uc.gvUC.Rows[e.RowIndex].Cells[1].Value.ToString();
+            uc.txtDiachi.Text = uc.gvUC.Rows[e.RowIndex].Cells[2].Value.ToString();
+            uc.dtNamsinh.Value = (DateTime)uc.gvUC.Rows[e.RowIndex].Cells[3].Value;
+            uc.txtEmail.Text = uc.gvUC.Rows[e.RowIndex].Cells[4].Value.ToString();
+            uc.txtPhoneno.Text = uc.gvUC.Rows[e.RowIndex].Cells[5].Value.ToString();
+            uc.txtGioitinh.Text = uc.gvUC.Rows[e.RowIndex].Cells[6].Value.ToString();
+            numDiemtb.Value = (decimal)uc.gvUC.Rows[e.RowIndex].Cells[7].Value;
         }
 
         private void btnChuyen_Click(object sender, EventArgs e)
@@ -79,7 +83,7 @@ namespace Week02
 
         private void btnLoc_Click(object sender, EventArgs e)
         {
-            gvHsinh.DataSource = hocSinhDAO.Loc(cbLocDiemtb.SelectedIndex);
+            uc.gvUC.DataSource = hocSinhDAO.Loc(cbLocDiemtb.SelectedIndex);
         }
     }
 }

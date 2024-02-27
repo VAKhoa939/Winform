@@ -18,16 +18,22 @@ namespace Week02
         public FGiaoVien()
         {
             InitializeComponent();
+            uc.Load += FGiaoVien_Load;
+            uc.btnThem.Click += btnThem_Click;
+            uc.btnXoa.Click += btnXoa_Click;
+            uc.btnSua.Click += btnSua_Click;
+            uc.gvUC.CellContentClick += gvGvien_CellContentClick;
+            uc.btnChuyen.Click += btnChuyen_Click;
         }
 
         private void FGiaoVien_Load(object sender, EventArgs e)
         {
-            gvGvien.DataSource = giaoVienDAO.Load();
+            uc.gvUC.DataSource = giaoVienDAO.Load();
         }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-            GiaoVien giaoVien = new GiaoVien(txtTen.Text, txtCmnd.Text, txtDiachi.Text, dtNamsinh.Value, txtEmail.Text, txtPhoneno.Text, txtGioitinh.Text);
+            GiaoVien giaoVien = new GiaoVien(uc.txtTen.Text, uc.txtCmnd.Text, uc.txtDiachi.Text, uc.dtNamsinh.Value, uc.txtEmail.Text, uc.txtPhoneno.Text, uc.txtGioitinh.Text);
             if (!giaoVien.CheckThongTin())
             {
                 MessageBox.Show("Thong tin khong hop le. Moi nhap lai.");
@@ -39,14 +45,14 @@ namespace Week02
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            GiaoVien giaoVien = new GiaoVien(txtTen.Text, txtCmnd.Text, txtDiachi.Text, dtNamsinh.Value, txtEmail.Text, txtPhoneno.Text, txtGioitinh.Text);
+            GiaoVien giaoVien = new GiaoVien(uc.txtTen.Text, uc.txtCmnd.Text, uc.txtDiachi.Text, uc.dtNamsinh.Value, uc.txtEmail.Text, uc.txtPhoneno.Text, uc.txtGioitinh.Text);
             giaoVienDAO.Xoa(giaoVien);
             FGiaoVien_Load(sender, e);
         }
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            GiaoVien giaoVien = new GiaoVien(txtTen.Text, txtCmnd.Text, txtDiachi.Text, dtNamsinh.Value, txtEmail.Text, txtPhoneno.Text, txtGioitinh.Text);
+            GiaoVien giaoVien = new GiaoVien(uc.txtTen.Text, uc.txtCmnd.Text, uc.txtDiachi.Text, uc.dtNamsinh.Value, uc.txtEmail.Text, uc.txtPhoneno.Text, uc.txtGioitinh.Text);
             if (!giaoVien.CheckThongTin())
             {
                 MessageBox.Show("Thong tin khong hop le. Moi nhap lai.");
@@ -58,13 +64,13 @@ namespace Week02
 
         private void gvGvien_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtTen.Text = gvGvien.Rows[e.RowIndex].Cells[0].Value.ToString();
-            txtCmnd.Text = gvGvien.Rows[e.RowIndex].Cells[1].Value.ToString();
-            txtDiachi.Text = gvGvien.Rows[e.RowIndex].Cells[2].Value.ToString();
-            dtNamsinh.Value = (DateTime)gvGvien.Rows[e.RowIndex].Cells[3].Value;
-            txtEmail.Text = gvGvien.Rows[e.RowIndex].Cells[4].Value.ToString();
-            txtPhoneno.Text = gvGvien.Rows[e.RowIndex].Cells[5].Value.ToString();
-            txtGioitinh.Text = gvGvien.Rows[e.RowIndex].Cells[6].Value.ToString();
+            uc.txtTen.Text = uc.gvUC.Rows[e.RowIndex].Cells[0].Value.ToString();
+            uc.txtCmnd.Text = uc.gvUC.Rows[e.RowIndex].Cells[1].Value.ToString();
+            uc.txtDiachi.Text = uc.gvUC.Rows[e.RowIndex].Cells[2].Value.ToString();
+            uc.dtNamsinh.Value = (DateTime)uc.gvUC.Rows[e.RowIndex].Cells[3].Value;
+            uc.txtEmail.Text = uc.gvUC.Rows[e.RowIndex].Cells[4].Value.ToString();
+            uc.txtPhoneno.Text = uc.gvUC.Rows[e.RowIndex].Cells[5].Value.ToString();
+            uc.txtGioitinh.Text = uc.gvUC.Rows[e.RowIndex].Cells[6].Value.ToString();
         }
 
         private void btnChuyen_Click(object sender, EventArgs e)

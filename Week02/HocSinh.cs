@@ -14,5 +14,11 @@ namespace Week02
         {
             this.diemTB = diemTB;
         }
+
+        public decimal DiemTB 
+        { 
+            get { return diemTB; } 
+            set { diemTB = value; } 
+        }
     }
 }

@@ -11,15 +11,21 @@ namespace Week02
 {
     class HocSinhDAO : ConNguoiDAO
     {
-        public override DataTable Load()
+        public void Them(HocSinh hocSinh)
         {
-            tableName = "HocSinh";
-            return base.Load();
+            sqlStr = string.Format("INSERT INTO HocSinh (Ten, Cmnd, Diachi, Namsinh, Email, Phoneno, Gioitinh, Diemtb) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}', '{5}', '{6}', '{7}')", hocSinh.Ten, hocSinh.Cmnd, hocSinh.DiaChi, hocSinh.NamSinh.ToString("yyyy-MM-dd"), hocSinh.Email, hocSinh.PhoneNo, hocSinh.GioiTinh, hocSinh.DiemTB);
+            dBConn.Execute(sqlStr, "Them");
+        }
+
+        public void Sua(HocSinh hocSinh)
+        {
+            sqlStr = string.Format("UPDATE HocSinh SET Ten = '{0}', Diachi = '{1}', Namsinh = '{2}', Email = '{3}', Phoneno = '{4}', Gioitinh = '{5}', Diemtb = '{6}' WHERE Cmnd = '{7}'", hocSinh.Ten, hocSinh.DiaChi, hocSinh.NamSinh.ToString("yyyy-MM-dd"), hocSinh.Email, hocSinh.PhoneNo, hocSinh.GioiTinh, hocSinh.DiemTB, hocSinh.Cmnd);
+            dBConn.Execute(sqlStr, "Sua");
         }
 
         public DataTable Loc(int mode)
         {
-            string sqlStr = string.Format("SELECT * FROM HocSinh");
+            sqlStr = string.Format("SELECT * FROM HocSinh");
             switch (mode)
             {
                 case 0:
