@@ -34,12 +34,8 @@ namespace Week02
         private void btnThem_Click(object sender, EventArgs e)
         {
             GiaoVien giaoVien = new GiaoVien(uc.txtTen.Text, uc.txtCmnd.Text, uc.txtDiachi.Text, uc.dtNamsinh.Value, uc.txtEmail.Text, uc.txtPhoneno.Text, uc.txtGioitinh.Text);
-            if (!giaoVien.CheckThongTin())
-            {
-                MessageBox.Show("Thong tin khong hop le. Moi nhap lai.");
-                return;
-            }
-            giaoVienDAO.Them(giaoVien);
+            if (KiemTraThongTin.CheckAll(giaoVien))
+                giaoVienDAO.Them(giaoVien);
             FGiaoVien_Load(sender, e);
         }
 
@@ -53,12 +49,8 @@ namespace Week02
         private void btnSua_Click(object sender, EventArgs e)
         {
             GiaoVien giaoVien = new GiaoVien(uc.txtTen.Text, uc.txtCmnd.Text, uc.txtDiachi.Text, uc.dtNamsinh.Value, uc.txtEmail.Text, uc.txtPhoneno.Text, uc.txtGioitinh.Text);
-            if (!giaoVien.CheckThongTin())
-            {
-                MessageBox.Show("Thong tin khong hop le. Moi nhap lai.");
-                return;
-            }
-            giaoVienDAO.Sua(giaoVien);
+            if (KiemTraThongTin.CheckAll(giaoVien))
+                giaoVienDAO.Sua(giaoVien);
             FGiaoVien_Load(sender, e);
         }
 

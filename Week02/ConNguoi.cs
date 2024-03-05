@@ -68,20 +68,5 @@ namespace Week02
             get { return gioiTinh; } 
             set { gioiTinh = value; }
         }
-
-        public bool CheckThongTin()
-        {
-            if (string.IsNullOrEmpty(ten)
-                || string.IsNullOrEmpty(Cmnd)
-                || string.IsNullOrEmpty(DiaChi)
-                || string.IsNullOrEmpty(Email)
-                || string.IsNullOrEmpty(PhoneNo)
-                || string.IsNullOrEmpty(gioiTinh)
-                ) return false;
-            if (!KiemTraChuoi.CheckEmail(Email)
-                || !KiemTraChuoi.CheckPhoneNo(PhoneNo)
-                ) return false;
-            return true;
-        }
     }
 }

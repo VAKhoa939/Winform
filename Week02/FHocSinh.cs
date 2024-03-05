@@ -34,12 +34,8 @@ namespace Week02
         private void btnThem_Click(object sender, EventArgs e)
         {
             HocSinh hocSinh = new HocSinh(uc.txtTen.Text, uc.txtCmnd.Text, uc.txtDiachi.Text, uc.dtNamsinh.Value, uc.txtEmail.Text, uc.txtPhoneno.Text, uc.txtGioitinh.Text, numDiemtb.Value);
-            if (!hocSinh.CheckThongTin())
-            {
-                MessageBox.Show("Thong tin khong hop le. Moi nhap lai.");
-                return;
-            }
-            hocSinhDAO.Them(hocSinh);
+            if (KiemTraThongTin.CheckAll(hocSinh))
+                hocSinhDAO.Them(hocSinh);
             FHocSinh_Load(sender, e);
         }
 
@@ -53,12 +49,8 @@ namespace Week02
         private void btnSua_Click(object sender, EventArgs e)
         {
             HocSinh hocSinh = new HocSinh(uc.txtTen.Text, uc.txtCmnd.Text, uc.txtDiachi.Text, uc.dtNamsinh.Value, uc.txtEmail.Text, uc.txtPhoneno.Text, uc.txtGioitinh.Text, numDiemtb.Value);
-            if (!hocSinh.CheckThongTin())
-            {
-                MessageBox.Show("Thong tin khong hop le. Moi nhap lai.");
-                return;
-            }
-            hocSinhDAO.Sua(hocSinh);
+            if (KiemTraThongTin.CheckAll(hocSinh))
+                hocSinhDAO.Sua(hocSinh);
             FHocSinh_Load(sender, e);
         }
 
